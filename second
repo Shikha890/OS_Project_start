@@ -1,0 +1,68 @@
+#include<stdio.h>
+int main()
+{
+int n,max,a;
+printf("enter the no of processes: ");
+scanf("%d",&n);
+printf("\n");
+int at[n];
+int bt[n];
+int tat[n];
+int wt[n];
+int e=0;
+for(int i=0 ; i<n ; i++)
+  {
+  	printf("enter the arrival time of PROCESS %d:-> ",i+1);
+  	scanf("%d",&at[i]);
+  	
+  	printf("enter the burst time of PROCESS %d:-> ",i+1);
+  	scanf("%d",&bt[i]);
+  	
+  	printf("\n\n");
+  }
+  
+  for(int i=0 ;i<n ; i++)
+  {
+  	if(e>=at[i])
+  	  {
+  	  	printf("Process %d executed for 6 unit of time.\n",i+1);
+  	  	bt[i]=bt[i]-6;
+  		e=e+6;
+	  }
+	else
+   {
+	  for(int i=0 ;i<n ; i++)
+      {
+  	if(e>=at[i])
+  	    {
+  	  	printf("Process %d executed for 6 unit of time.\n",i+1);
+  	  	bt[i]=bt[i]-6;
+  		e=e+6;
+	    }
+	  }
+	  break;
+   }
+}
+
+for(int i=0;i<n;i++)
+{
+	if(bt[i]<=10)
+	{printf("Process %d executed for %d units of time.\n",i+1,bt[i]);
+	bt[i]=0;
+	e=e+bt[i];}
+	else
+	{
+		printf("Process %d executed for 10 units of time.\n",i+1);
+		bt[i]=bt[i]-10;
+		e=e+10;
+	}
+}
+	do{
+	    
+	}while(bt[0]!=0 && bt[1]!=0 && bt[2]!=0 && bt[3]!=0);
+	printf("all the four processes executed in %d units of time.\n",e);
+
+}
+
+  
+
