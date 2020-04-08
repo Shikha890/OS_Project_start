@@ -1,0 +1,104 @@
+#include<stdio.h>
+int main()
+{
+int n,max,a;
+printf("enter the no of processes: ");
+scanf("%d",&n);
+printf("\n");
+int at[n];
+int bt[n];
+int tat[n];
+int wt[n];
+int temp[n];
+int e=0;
+float awt=0,sum=0;
+
+for(int i=0 ; i<n ; i++)
+  {
+  	printf("enter the arrival time of PROCESS %d:-> ",i+1);
+  	scanf("%d",&at[i]);
+  	
+  	printf("enter the burst time of PROCESS %d:-> ",i+1);
+  	scanf("%d",&bt[i]);
+  	temp[i]=bt[i];
+  	
+  	printf("\n\n");
+  }
+  
+  
+  for(int i=0 ;i<n ; i++)
+  {
+  	if(e>=at[i])
+  	  {
+  	  	printf("Process %d executed for 6 units of time.\n",i+1);
+  	  	bt[i]=bt[i]-6;
+  		e=e+6;
+	  }
+	else
+   {
+	  for(int i=0 ;i<n ; i++)
+      {
+  	if(e>=at[i])
+  	    {
+  	  	printf("Process %d executed for 6 units of time.\n",i+1);
+  	  	bt[i]=bt[i]-6;
+  		e=e+6;
+	    }
+	  }
+	  break;
+   }
+}
+
+for(int i=0;i<n;i++)
+{
+	if(bt[i]<=10)
+	{printf("Process %d executed for %d units of time.\n",i+1,bt[i]);
+	e=e+bt[i];
+	bt[i]=0;
+	printf("***Process %d completed in %d units of time.\n\n",i+1,e);
+	tat[i]=e-at[i];}
+	else
+	{
+		printf("Process %d executed for 10 units of time.\n",i+1);
+		bt[i]=bt[i]-10;
+		e=e+10;
+	}
+}
+	do{
+		max=bt[0];
+		for(int i=0;i<n;i++)
+		{
+		  if(bt[i]>max)
+		  {max=bt[i];
+		  a=i;}
+		  else
+		  continue;	
+		}
+	    
+	  
+	    	printf("Process %d executed for %d units of time.\n",a+1,max);
+	    	e=e+bt[a];
+	    	bt[a]=0;
+	    	printf("*****Process %d completed in %d units of time.\n\n",a+1,e);
+	    	tat[a]=e-at[a];
+	    
+	}while(bt[0]!=0 || bt[1]!=0 || bt[2]!=0 || bt[3]!=0);
+	
+	printf("-------------------------all the four processes executed in %d units of time.\n",e);
+ 
+ //for calculating waiting time of each process.
+ 
+ for(int i=0;i<n;i++)
+ {
+ 	printf("Turn Around Time of Process %d is %d \n",i+1,tat[i]);
+ 	
+ 	wt[i]=tat[i]-temp[i];
+ 	printf("Waiting Time of Process %d is %d \n\n",i+1,wt[i]);
+ 	sum=sum+wt[i];
+ }
+ awt=sum/n;
+ printf("average waiting time of the proceeses is %f units of time",awt);
+}
+
+  
+
